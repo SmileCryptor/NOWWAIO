@@ -1,0 +1,43 @@
+@import ../../styles/helpers
+
+.container
+    text-align: center
+    padding: 0px 58px
+
+.logo
+    position: relative
+    z-index: 12
+    display: inline-block
+    flex-shrink: 0
+    width: 70px
+    +d
+        margin-right: auto
+    img
+        width: 100%
+
+.appicon
+    margin-top: 60px
+    margin-bottom: 30px
+    width: 60px
+    height: 60px
+    padding-top: 9px
+    border-radius: 100%
+    &.active
+        background-color: #fac927
+
+.tools
+    padding: 1px 0px
+    border-radius: 50px
+    background-color: #1B2028
+    text-align: center
+
+.menuitem
+    display: block
+    height: 50px
+    width: 50px
+    margin: 10px auto
+    border-radius: 200px
+    &.active
+        background-color: #2A323D
+    svg
+        fill: white
