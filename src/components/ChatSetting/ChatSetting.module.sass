@@ -1,19 +1,21 @@
 .container
     display: flex
     flex-direction: column
-    height: 100vh
-    padding-left: 16px
-    padding-right: 16px
-    padding-top: 66px
+    padding: 66px 16px
+    overflow-y: scroll
+    height: inherit
 
     &__title
         display: flex
-        justify-content: center
+        justify-content: left
         align-items: center        
         font-size: 32px
         line-height: 38px
 
         &__close
+            background: #11141B
+            padding: 3px
+            border-radius: 100px
             width: 28px
             height: 28px
             margin-right: 20px
@@ -43,11 +45,21 @@
             font-size: 25px
             line-height: 29px
         &__state
+            display: flex
+            align-items: center
             font-size: 16px
             line-height: 19px
             margin-top: 9px
+
+            &__icon
+                background: #C6DDB3
+                border-radius: 50%
+                width: 15px
+                height: 15px
+                margin-right: 9px
+
         &__date
-            margin-top: 2px
+            margin-top: 7px
             font-size: 16px
             line-height: 19px
 
@@ -82,10 +94,15 @@
         margin-top: 16px
         gap: 12px
 
+        &__title
+            display: flex
+            align-items: center
+
         &__icon
-            width: 26px
-            height: 26px
+            width: 31px !important
+            height: 31px !important
             color: #ffffff
+            margin-right: 22px
 
     &__gallery
         margin-top: 37px

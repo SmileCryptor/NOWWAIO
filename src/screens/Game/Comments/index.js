@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import CommentIcon from "@mui/icons-material/Comment";
 import styles from "./my.module.sass";
 import cn from "classnames";
 import MemberComment from "../MemberComment";
@@ -36,13 +37,32 @@ const comments = [
 
 const Comments = ({ children }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  const handleResize = () => {
+    if (window.innerWidth < 720) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className={styles.container}>
       <p className={styles.subtitle}>MEMBER COMMENTS</p>
       <div className={styles.heading_wrapper}>
         <h1 className={styles.heading}>#ClashofClans</h1>
-        <div className={styles.leavebutton}>Leave a Comment</div>
+        {isMobile ? (
+          <div className={styles.leavebutton}>
+            <CommentIcon></CommentIcon>
+          </div>
+        ) : (
+          <div className={styles.leavebutton}>Leave a Comment</div>
+        )}
       </div>
       <div className={styles.wrapper}>
         <div className={styles.nav}>
