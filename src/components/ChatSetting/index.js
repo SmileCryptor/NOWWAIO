@@ -22,11 +22,16 @@ const YellowSwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-const ChatSetting = () => {
+const ChatSetting = (props) => {
   return (
     <div className={styles.container}>
       <div className={styles.container__title}>
-        <CloseIcon className={styles.container__title__close}></CloseIcon>
+        <CloseIcon
+          className={styles.container__title__close}
+          onClick={() => {
+            props.close();
+          }}
+        ></CloseIcon>
         <div className={styles.container__title}>Chat Settings</div>
       </div>
 

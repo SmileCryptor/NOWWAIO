@@ -69,7 +69,11 @@ const ChatListHeader = () => {
         }}
       >
         <div className={styles.setting}>
-          <ChatSetting />
+          <ChatSetting
+            close={() => {
+              setShowSetting(false);
+            }}
+          />
         </div>
       </SlidingPanel>
     </>
