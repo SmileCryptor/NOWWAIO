@@ -10,26 +10,28 @@ import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 
 const Rightbar = ({ children }) => {
   return (
-    <div className={styles.container}>
+    <div>
       <User className={styles.user} />
-      <div className={styles.bar}>
-        <div className={styles.avatar}>
-          <img src="/images/content/avatar-1.jpg" alt="Avatar" />
+      <div className={styles.container}>
+        <div className={styles.bar}>
+          <div className={styles.avatar}>
+            <img src="/images/content/avatar-1.jpg" alt="Avatar" />
+          </div>
+          <div className={styles.avatar}>
+            <img src="/images/content/avatar-2.jpg" alt="Avatar" />
+            <div className={styles.active}></div>
+          </div>
+          <div className={styles.avatar}>
+            <img src="/images/content/avatar-3.jpg" alt="Avatar" />
+          </div>
+          <div className={styles.avatar}>
+            <img src="/images/content/avatar-4.jpg" alt="Avatar" />
+            <div className={styles.active}></div>
+          </div>
         </div>
-        <div className={styles.avatar}>
-          <img src="/images/content/avatar-2.jpg" alt="Avatar" />
-          <div className={styles.active}></div>
-        </div>
-        <div className={styles.avatar}>
-          <img src="/images/content/avatar-3.jpg" alt="Avatar" />
-        </div>
-        <div className={styles.avatar}>
-          <img src="/images/content/avatar-4.jpg" alt="Avatar" />
-          <div className={styles.active}></div>
-        </div>
-      </div>
 
-      <AddOutlinedIcon sx={{ fontSize: "30px", marginTop: "20px" }} />
+        <AddOutlinedIcon sx={{ fontSize: "30px", marginTop: "20px" }} />
+      </div>
     </div>
   );
 };

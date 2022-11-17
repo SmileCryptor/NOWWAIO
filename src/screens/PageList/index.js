@@ -8,7 +8,10 @@ const PageList = () => {
     <div className={styles.page}>
       <div className={cn("container", styles.container)}>
         <p>
-          <Link to="/">Home Page</Link>
+          <Link to="/">New Home Page</Link>
+        </p>
+        <p>
+          <Link to="/home">Old Home Page</Link>
         </p>
         <p>
           <Link to="/upload-variants">Upload Variants</Link>
@@ -29,7 +32,7 @@ const PageList = () => {
           <Link to="/search01">Search01</Link>
         </p>
         <p>
-          <Link to="/search02">Search02</Link>
+          <Link to="/Mint">Mint</Link>
         </p>
         <p>
           <Link to="/profile">Profile</Link>

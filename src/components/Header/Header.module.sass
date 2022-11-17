@@ -8,7 +8,7 @@
     +m
         padding: 48px 0 24px
         border: none
-
+        
 .container
     display: flex
     align-items: center
@@ -33,6 +33,7 @@
     img
         width: 100%
 
+    
 .wrapper
     display: flex
     align-items: center
@@ -46,7 +47,7 @@
         right: 0
         flex-direction: column
         align-items: stretch
-        height: 390px
+        height: 580px
         margin: 0
         padding: 140px 32px 40px
         box-shadow: 0px 64px 64px rgba(31, 47, 70, 0.2)
@@ -100,7 +101,7 @@
     position: relative
     flex-shrink: 0
     width: 420px
-    margin-right: 24px
+    margin-right: 24px    
     +t
         display: none
     +m
@@ -113,12 +114,13 @@
         top: 14px
         left: 15px
 
+
 .input
     width: 100%
     height: 58px
     padding: 0 42px 0 54px
-    background: none
-    border-radius: 25px
+    background: none   
+    border-radius:25px
     color: #FFFFFF
     background-color: #1B2028
     +poppins
@@ -161,21 +163,21 @@
         display: none
         width: 100%
         margin: auto 0 0
-
+ 
     button
         background-color: #443122
         color: white
         height: 57px
         width: 185px
         border-radius: 25px
-        padding-left: 40px
+        padding-left: 40px  
         padding-top: 1px
         +body-2
-        &:hover
+        &:hover      
             border: 1px solid
             border-color: #9b704f
 
-.newsicon
+.newsicon 
     position: absolute
     top: 7px
     left: 7px
@@ -186,12 +188,18 @@
     height: 42px
 
     svg
-        fill: #FFFFFF
+        fill: #FFFFFF                  
+        
 
 .notification
     margin-right: 24px
     +m
         margin-right: 20px
+
+.user
+    display: none
+    +m
+        display: block
 
 .burger
     display: none
@@ -223,7 +231,3 @@
             transform: translateY(-4px)
         &:after
             transform: translateY(3px)
-.user
-    display: none
-    +m
-        display: block

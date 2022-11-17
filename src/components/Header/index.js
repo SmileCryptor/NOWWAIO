@@ -13,8 +13,20 @@ const nav = [
     title: "Profile",
   },
   {
-    url: "/faq",
-    title: "Faq",
+    url: "/game",
+    title: "Game",
+  },
+  {
+    url: "/chat",
+    title: "Chat",
+  },
+  {
+    url: "/mint",
+    title: "NFT Mint",
+  },
+  {
+    url: "/gallery",
+    title: "NFT Gallery",
   },
 ];
 
@@ -75,17 +87,11 @@ const Headers = () => {
             <div className={styles.newsicon}>
               <Icon className="searchicon" name="bulb" size="28" />
             </div>
+
             <button>News for you</button>
           </form>
         </div>
-        <button
-          className={cn(styles.burger, { [styles.active]: visibleNav })}
-          onClick={() => setVisibleNav(!visibleNav)}
-        ></button>
-
         <Notification className={styles.notification} />
-        <User className={styles.user} />
-
         {/* <Link
           className={cn("button-small", styles.button)}
           to="/upload-variants"
@@ -98,6 +104,11 @@ const Headers = () => {
         >
           Connect Wallet
         </Link> */}
+        {/* <User className={styles.user} /> */}
+        <button
+          className={cn(styles.burger, { [styles.active]: visibleNav })}
+          onClick={() => setVisibleNav(!visibleNav)}
+        ></button>
       </div>
     </header>
   );

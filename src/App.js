@@ -8,7 +8,7 @@ import ConnectWallet from "./screens/ConnectWallet";
 import Faq from "./screens/Faq";
 import Activity from "./screens/Activity";
 import Search01 from "./screens/Search01";
-import Search02 from "./screens/Search02";
+import Mint from "./screens/Mint";
 import Profile from "./screens/Profile";
 import ProfileEdit from "./screens/ProfileEdit";
 import Item from "./screens/Item";
@@ -16,6 +16,8 @@ import PageList from "./screens/PageList";
 import NHome from "./screens/NHome";
 import NAccount from "./screens/NAccount";
 import Chat from "./screens/Chat";
+import Gallery from "./screens/Gallery";
+import Store from "./screens/Store";
 import Game from "./screens/Game";
 
 function App() {
@@ -106,10 +108,28 @@ function App() {
         />
         <Route
           exact
-          path="/search02"
+          path="/mint"
           render={() => (
             <Page>
-              <Search02 />
+              <Mint />
+            </Page>
+          )}
+        />
+        <Route
+          exact
+          path="/gallery"
+          render={() => (
+            <Page>
+              <Gallery />
+            </Page>
+          )}
+        />
+        <Route
+          exact
+          path="/store"
+          render={() => (
+            <Page>
+              <Store />
             </Page>
           )}
         />

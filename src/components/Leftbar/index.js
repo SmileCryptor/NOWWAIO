@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./Leftbar.module.sass";
 import cn from "classnames";
 import Icon from "../Icon";
 import { Link, NavLink } from "react-router-dom";
 import Image from "../Image";
 import { withRouter, useLocation } from "react-router-dom";
+import OutsideClickHandler from "react-outside-click-handler";
 
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 import LocalFireDepartmentOutlinedIcon from "@mui/icons-material/LocalFireDepartmentOutlined";
@@ -18,6 +19,7 @@ import ChatIcon from "@mui/icons-material/Chat";
 
 const Leftbar = ({ children }) => {
   const { pathname } = useLocation();
+  const [visible, setVisible] = useState(false);
 
   return (
     <div className={styles.container}>
@@ -33,7 +35,7 @@ const Leftbar = ({ children }) => {
       <div
         className={cn(
           styles.appicon,
-          (pathname == "/" || pathname == "/search02") && styles.active
+          (pathname == "/" || pathname == "/Mint") && styles.active
         )}
       >
         <DashboardOutlinedIcon sx={{ fontSize: 40 }} />
@@ -47,17 +49,30 @@ const Leftbar = ({ children }) => {
             <LocalFireDepartmentOutlinedIcon />
           </button>
         </Link>
-
-        <Link to="/search02">
-          <button
-            className={cn(
-              styles.menuitem,
-              pathname == "/search02" && styles.active
-            )}
-          >
-            <Groups2OutlinedIcon />
-          </button>
-        </Link>
+        <OutsideClickHandler onOutsideClick={() => setVisible(false)}>
+          <Link to="/mint">
+            <button
+              className={cn(
+                styles.menuitem,
+                styles.mint,
+                pathname == "/mint" && styles.active
+              )}
+              onClick={() => setVisible(!visible)}
+            >
+              <Groups2OutlinedIcon />
+              {visible && (
+                <div className={styles.body}>
+                  <div className={styles.item}>
+                    <Link to="/mint">Mint</Link>
+                  </div>
+                  <div className={styles.item}>
+                    <Link to="/gallery">Gallery</Link>
+                  </div>
+                </div>
+              )}
+            </button>
+          </Link>
+        </OutsideClickHandler>
 
         <Link to="/pagelist">
           <button
@@ -81,24 +96,24 @@ const Leftbar = ({ children }) => {
         </Link>
       </div>
       <div className={styles.bar}>
-        <Link to="/activity">
+        <Link to="/game">
           <button
             className={cn(
               styles.menuitem,
-              pathname == "/activity" && styles.active
+              pathname == "/game" && styles.active
             )}
           >
             <TrendingUpOutlinedIcon />
           </button>
         </Link>
 
-        <Link to="/faq">
+        {/* <Link to="/faq">
           <button
             className={cn(styles.menuitem, pathname == "/faq" && styles.active)}
           >
             <QuestionAnswerOutlinedIcon />
           </button>
-        </Link>
+        </Link> */}
 
         <Link to="/chat">
           <button
