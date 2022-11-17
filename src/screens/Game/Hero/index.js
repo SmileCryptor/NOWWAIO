@@ -18,6 +18,7 @@ const Hero = () => {
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
+    handleResize();
   }, []);
 
   return (
@@ -57,7 +58,9 @@ const Hero = () => {
                 <StarOutlineIcon className={styles.rating__outline} />
                 <StarOutlineIcon className={styles.rating__outline} />
               </div>
-              <p className={styles.rating__text}>15K People Played Worldwide</p>
+              <p className={styles.row__rating__text}>
+                15K People Played Worldwide
+              </p>
             </div>
           </div>
 

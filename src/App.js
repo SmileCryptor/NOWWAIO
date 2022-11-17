@@ -19,6 +19,7 @@ import Chat from "./screens/Chat";
 import Gallery from "./screens/Gallery";
 import Store from "./screens/Store";
 import Game from "./screens/Game";
+import Login from "./screens/Login";
 
 function App() {
   return (
@@ -176,6 +177,15 @@ function App() {
           render={() => (
             <Page>
               <Game />
+            </Page>
+          )}
+        />
+        <Route
+          exact
+          path="/login"
+          render={() => (
+            <Page>
+              <Login />
             </Page>
           )}
         />

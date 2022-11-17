@@ -49,6 +49,7 @@ const Comments = ({ children }) => {
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
+    handleResize();
   }, []);
 
   return (

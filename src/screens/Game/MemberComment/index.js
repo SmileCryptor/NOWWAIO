@@ -19,7 +19,7 @@ const MemberComment = (props) => {
       <div className={styles.box__info}>
         <img src="/images/content/avatar-1.jpg" alt="Avatar" />
         <span>{comments.name}</span>
-        <span>{"Posted on" + comments.date}</span>
+        <span>{"Posted on " + comments.date}</span>
       </div>
       <div className={styles.box__more}>
         <MoreHorizIcon />
