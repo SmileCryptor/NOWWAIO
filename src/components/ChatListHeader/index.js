@@ -32,7 +32,7 @@ const ChatListHeader = () => {
             </div>
           </div>
         </div>
-        <div className={styles.topGradient} />
+        {/* <div className={styles.topGradient} /> */}
 
         <div className={styles.container__right}>
           <IconButton aria-label="loadmore">
