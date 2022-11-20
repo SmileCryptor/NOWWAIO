@@ -20,6 +20,8 @@ import Gallery from "./screens/Gallery";
 import Store from "./screens/Store";
 import Game from "./screens/Game";
 import Login from "./screens/Login";
+import WalletBackup from "./screens/WalletBackup";
+import Wallet from "./screens/Wallet";
 
 function App() {
   return (
@@ -186,6 +188,24 @@ function App() {
           render={() => (
             <Page>
               <Login />
+            </Page>
+          )}
+        />
+        <Route
+          exact
+          path="/wallet/backup"
+          render={() => (
+            <Page>
+              <WalletBackup />
+            </Page>
+          )}
+        />
+        <Route
+          exact
+          path="/wallet"
+          render={() => (
+            <Page>
+              <Wallet />
             </Page>
           )}
         />
