@@ -4,11 +4,11 @@ import ChatInputState from "../ChatInputState";
 import { IconButton } from "@mui/material";
 import styles from "./ChatInput.module.sass";
 
-const ChatInput = () => {
+const ChatInput = (props) => {
   return (
     <>
-      <ChatInputState />
-      <ChatCustomInput />
+      {/* <ChatInputState /> */}
+      <ChatCustomInput sendMessage={props.sendMessage} />
     </>
   );
 };

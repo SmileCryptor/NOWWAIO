@@ -23,12 +23,18 @@
 .iconbox
     border: 1px solid #2A323D!important
     height: 55px
-    border-radius: 20px!important
+    border-radius: 30%!important
     background-color: #11141B!important
+    +m
+        min-width: 40px!important
+        height: 45px
     &:hover
         border: 1px solid #7d7f81!important
     svg
         fill: $white
+        +m
+            width: 20px
+            height: 20px
 
 .gray_box
     border-radius: 20px

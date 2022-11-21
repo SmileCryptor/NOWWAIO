@@ -8,7 +8,7 @@ const Hero = ({ children }) => {
       <div className={styles.textbox}>
         <p className={styles.subtitle}> FEATURED</p>
         <h1 className={styles.title}>
-          Ultimate gamers Fortnite allaround review
+          Ultimate gamers Fortnite all around review
         </h1>
         <p className={styles.text}>
           Become one of the contributors in our Fortnite community

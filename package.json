@@ -19,6 +19,7 @@
     "ethers": "^5.7.2",
     "immer": "^9.0.16",
     "keccak256": "^1.0.6",
+    "local-storage": "^2.0.0",
     "merkletreejs": "^0.3.0",
     "moralis": "1.8.0",
     "react": "^17.0.2",
@@ -37,6 +38,7 @@
     "react-sliding-side-panel": "^2.0.3",
     "react-swipeable-views": "^0.14.0",
     "sass": "^1.53.0",
+    "socket.io-client": "^2.3.0",
     "use-dark-mode": "^2.3.1",
     "zustand": "^4.1.4"
   },
@@ -63,5 +65,7 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {},
+  "proxy": "http://localhost:8000"
 }

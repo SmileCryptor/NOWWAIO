@@ -24,7 +24,7 @@ const NAccount = ({ children }) => {
         <Grid item xs={12} md={8}>
           <div className={styles.section_picture}>
             <img src="/images/content/avatar-1.jpg" alt="Avatar" />
-            <Grid container spacing={2} className={styles.namebox}>
+            <Grid container spacing={0} className={styles.namebox}>
               <Grid item xs={10} style={{ paddingTop: "0px" }}>
                 <p className={styles.name}>Daniel Doe</p>
                 <p className={styles.username}>@DANIELDOE993</p>

@@ -3,18 +3,14 @@ import { IconButton } from "@mui/material";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import styles from "./ChatMsgFrom.module.sass";
 
-const ChatMsgFrom = () => {
+const ChatMsgFrom = (props) => {
   return (
     <div id="chatMsgFrom" className={styles.container}>
       <div className={styles.container__avatar}>
         <img src="/images/content/avatar-1.jpg" alt="Avatar" />
       </div>
       <div className={styles.container__message}>
-        <span>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-          volutpat. Ut wisi enim ad
-        </span>
+        <span>{props.text}</span>
 
         <div label="edit" style={{ display: "none" }}>
           <MoreHorizIcon className={styles.container__message__editButton} />

@@ -4,22 +4,13 @@ import styles from "./FriendList.module.sass";
 
 const friendList = [
   {
-    name: "Leo",
-    avatar: "/images/content/avatar-1.jpg",
-    time: "00:33",
-    lastMsg: "Why is it that players...",
-    isTyping: false,
-    state: "check",
-    isActive: false,
-  },
-  {
     name: "Smith",
     avatar: "/images/content/avatar-2.jpg",
     time: "00:33",
     lastMsg: "Why is it that players...",
     isTyping: true,
     state: "check",
-    isActive: true,
+    isActive: false,
   },
   {
     name: "Leonard",
@@ -29,7 +20,7 @@ const friendList = [
     isTyping: true,
     state: "doublecheck",
     isActive: true,
-    currentSelect: true,
+    currentSelect: false,
   },
   {
     name: "Jacky",
@@ -49,19 +40,12 @@ const friendList = [
     state: "check",
     isActive: false,
   },
-  {
-    name: "TopDever",
-    avatar: "/images/content/avatar-6.jpg",
-    time: "00:33",
-    lastMsg: "Why is it that players...",
-    isTyping: false,
-    state: "check",
-    isActive: false,
-  },
 ];
 
 const FriendList = (props) => {
+  const { users } = props;
   const [list, setList] = useState(friendList);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
 
   const itemClicked = (_index) => {
     let _list = list;
@@ -76,10 +60,47 @@ const FriendList = (props) => {
     props.chatViewUpdate("single");
   };
 
+  const getLastMessage = (user) => {
+    var allmessages = props.messages;
+    var lastmsg;
+    for (let i = 0; i < allmessages.length; i++) {
+      const element = allmessages[i];
+      if (element.with == user) {
+        if (element.side == "from") lastmsg = element.data;
+        else lastmsg = "You: " + element.data;
+      }
+    }
+    return lastmsg;
+  };
+
   return (
     <>
       <div className={styles.container}>
-        {list.map((friend, index) => {
+        {users.map((user, index) => {
+          return (
+            <FriendItem
+              data={{
+                name: user,
+                avatar: "/images/content/avatar-0.jpg",
+                time: "01:23",
+                lastMsg: getLastMessage(user),
+                isTyping: false,
+                state: "check",
+                isActive: true,
+                currentSelect: selectedIndex == index,
+              }}
+              key={index}
+              index={index}
+              itemClicked={() => {
+                setSelectedIndex(index);
+                props.chatViewUpdate("single");
+                props.selectedUserUpdate(user);
+              }}
+            />
+          );
+        })}
+        {/* refer this style */}
+        {/* {list.map((friend, index) => {
           return (
             <FriendItem
               data={friend}
@@ -88,7 +109,7 @@ const FriendList = (props) => {
               itemClicked={itemClicked}
             />
           );
-        })}
+        })} */}
       </div>
     </>
   );

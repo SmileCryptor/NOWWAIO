@@ -5,10 +5,11 @@ import OutsideClickHandler from "react-outside-click-handler";
 import styles from "./User.module.sass";
 import Icon from "../../Icon";
 import Theme from "../../Theme";
-import Wallet from '../Wallet';
-import Modal from '../../Modal';
-import { useWeb3React } from '@web3-react/core'
-import { shortenAddress } from '../../../helper'
+import Wallet from "../Wallet";
+import Modal from "../../Modal";
+import { useWeb3React } from "@web3-react/core";
+import { shortenAddress, shortenUsername } from "../../../helper";
+import ls from "local-storage";
 
 const items = [
   {
@@ -33,52 +34,67 @@ const items = [
 ];
 
 const User = ({ className }) => {
+  const [login, setLogin] = useState(false);
+  const [user, setUser] = useState("");
+  useEffect(() => {
+    setLogin(ls.get("login"));
+    setUser(ls.get("user"));
+  }, []);
+
+  const onClickLogOut = async () => {
+    ls.set("login", false);
+    ls.set("user", "");
+    window.location.reload();
+  };
+
   const [visible, setVisible] = useState(false);
-  const [balance, setBalance] = useState(0)
-  const location = useLocation()
+  const [balance, setBalance] = useState(0);
+  const location = useLocation();
 
-  const { account, deactivate, library } = useWeb3React()
+  const { account, deactivate, library } = useWeb3React();
 
-  const [showDropDown, setShowDropDown] = useState(false)
+  const [showDropDown, setShowDropDown] = useState(false);
   const [walletModalOpen, setWalletModalOpen] = useState(false);
 
   // const toggleWalletModal = useWalletModalToggle()
   const toggleWalletModal = () => {
-    setWalletModalOpen(!walletModalOpen)
-  }
+    setWalletModalOpen(!walletModalOpen);
+  };
 
   const handleClickDropDownMenu = () => {
-      setShowDropDown(prev => !prev)
-  }
+    setShowDropDown((prev) => !prev);
+  };
 
   const detectTarget = (event) => {
-      if( !event.target.matches('#dropdownMenuBtn') ) {
-          setShowDropDown(false)
-      }
-  }
+    if (!event.target.matches("#dropdownMenuBtn")) {
+      setShowDropDown(false);
+    }
+  };
 
   const onDisconnect = () => {
     deactivate();
     setVisible(!visible);
-  }
+  };
 
   useEffect(() => {
-      window.addEventListener('click', detectTarget)
+    window.addEventListener("click", detectTarget);
 
-      return () => {
-          window.removeEventListener('click', detectTarget)
-      }
-  })
+    return () => {
+      window.removeEventListener("click", detectTarget);
+    };
+  });
 
   useEffect(() => {
-    async function get () {
+    async function get() {
       if (library) {
-        await library?.getBalance(account).then((result) => setBalance(result / 1e18))
+        await library
+          ?.getBalance(account)
+          .then((result) => setBalance(result / 1e18));
       }
     }
 
     get();
-  })
+  });
 
   return (
     <OutsideClickHandler onOutsideClick={() => setVisible(false)}>
@@ -88,10 +104,28 @@ const User = ({ className }) => {
             <img src="/images/content/avatar-user.jpg" alt="Avatar" />
           </div>         
         </div> */}
-        {
-        account 
-        ?
-          <button className={cn("button-stroke", styles.button, styles.head, styles.connect)} onClick={() => setVisible(!visible)}>
+        {login ? (
+          <button
+            className={cn(
+              "button-stroke",
+              styles.button,
+              styles.head,
+              styles.connect
+            )}
+            onClick={() => setVisible(!visible)}
+          >
+            {shortenUsername(user)}
+          </button>
+        ) : account ? (
+          <button
+            className={cn(
+              "button-stroke",
+              styles.button,
+              styles.head,
+              styles.connect
+            )}
+            onClick={() => setVisible(!visible)}
+          >
             {/* <div className={styles.avatar}>
               <img src="/images/content/avatar-user.jpg" alt="Avatar" />
             </div>
@@ -100,21 +134,26 @@ const User = ({ className }) => {
             </div> */}
             {shortenAddress(account)}
           </button>
-        :
-          <button 
-            className={cn("button-stroke", 
-                      styles.button, 
-                      styles.head, 
-                      styles.connect)} 
-            onClick={() => toggleWalletModal()}>
-              Connect Wallet
+        ) : (
+          <button
+            className={cn(
+              "button-stroke",
+              styles.button,
+              styles.head,
+              styles.connect
+            )}
+            onClick={() => toggleWalletModal()}
+          >
+            Login
           </button>
-        }
+        )}
         {visible && (
           <div className={styles.body}>
-            <div className={styles.name}>Enrico Cole</div>
+            <div className={styles.name}>{user}</div>
             <div className={styles.code}>
-              <div className={styles.number}>{shortenAddress(account)}</div>
+              <div className={styles.number}>
+                {account && shortenAddress(account)}
+              </div>
               <button className={styles.copy}>
                 <Icon name="copy" size="16" />
               </button>
@@ -129,7 +168,9 @@ const User = ({ className }) => {
                 </div>
                 <div className={styles.details}>
                   <div className={styles.info}>Balance</div>
-                  <div className={styles.price}>{(balance.toFixed(3) / 1)} ETH</div>
+                  <div className={styles.price}>
+                    {balance.toFixed(3) / 1} ETH
+                  </div>
                 </div>
               </div>
               <button
@@ -139,10 +180,7 @@ const User = ({ className }) => {
               </button>
             </div>
             <div className={styles.menu}>
-              <Link
-                className={styles.item}
-                to="/store"
-              >
+              <Link className={styles.item} to="/store">
                 <div className={styles.icon}>
                   <Icon name="image" size="20" />
                 </div>
@@ -162,16 +200,15 @@ const User = ({ className }) => {
                 <div className={styles.icon}>
                   <Icon name="exit" size="20" />
                 </div>
-                <div className={styles.text}>Disconnect</div>
+                <div className={styles.text} onClick={onClickLogOut}>
+                  Log Out
+                </div>
               </a>
             </div>
           </div>
         )}
       </div>
-      <Modal
-        visible={walletModalOpen}
-        onClose={ toggleWalletModal }
-      >
+      <Modal visible={walletModalOpen} onClose={toggleWalletModal}>
         <Wallet onClose={toggleWalletModal} />
       </Modal>
     </OutsideClickHandler>

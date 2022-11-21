@@ -10,7 +10,12 @@ const MessageList = (props) => {
     <div className={styles.container}>
       <MessageListHeader />
       <div className={styles.container__friendList}>
-        <FriendList chatViewUpdate={props.chatViewUpdate} />
+        <FriendList 
+        chatViewUpdate={props.chatViewUpdate} 
+        selectedUserUpdate={props.selectedUserUpdate} 
+        users={props.users} 
+        messages={props.messages} 
+        />
       </div>
       <GroupList chatViewUpdate={props.chatViewUpdate} />
     </div>

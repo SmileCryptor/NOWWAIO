@@ -6,7 +6,15 @@ import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import MicNoneIcon from "@mui/icons-material/MicNone";
 import styles from "./ChatCustomInput.module.sass";
 
-const ChatCustomInput = () => {
+const ChatCustomInput = (props) => {
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      console.log("on Enterkey", event.target.value);
+      props.sendMessage(event.target.value);
+      event.target.value = "";
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.container__inputLeft}>
@@ -15,6 +23,7 @@ const ChatCustomInput = () => {
           type="text"
           name="message"
           placeholder="Start typing..."
+          onKeyDown={handleKeyDown}
         />
       </div>
       <div className={styles.container__inputRight}>

@@ -8,7 +8,7 @@ import styles from "./ChatListHeader.module.sass";
 import SlidingPanel from "react-sliding-side-panel";
 import "react-sliding-side-panel/lib/index.css";
 
-const ChatListHeader = () => {
+const ChatListHeader = (props) => {
   const [showSetting, setShowSetting] = useState(false);
   const [spanWidth, setSpanWidth] = useState(25);
   return (
@@ -16,10 +16,12 @@ const ChatListHeader = () => {
       <div className={styles.container}>
         <div className={styles.container__left}>
           <div className={styles.container__left__avatar}>
-            <img src="/images/content/avatar-1.jpg" alt="Avatar" />
+            <img src="/images/content/avatar-0.jpg" alt="Avatar" />
           </div>
           <div className={styles.container__left__info}>
-            <span className={styles.container__left__info__name}>Leo</span>
+            <span className={styles.container__left__info__name}>
+              {props.selectedUser}
+            </span>
             <div className={styles.container__left__info__state}>
               <div
                 className={styles.container__left__info__state__iconActive}
