@@ -64,7 +64,19 @@ const QontoConnector = styled(StepConnector)(({ theme }) => ({
   },
 }));
 
-const WalletBackupStep2 = (props) => {
+const WalletBackupStep3 = (props) => {
+  const [selectedPhrases, setSelectedPhrases] = useState([]);
+  const [phrase, setPhrase] = useState([]);
+
+  useEffect(() => {
+    let _phrase = [];
+    seeds.map((seed, index) => {
+      const _seed = { seed: seed, select: false };
+      _phrase.push(_seed);
+    });
+    setPhrase(_phrase);
+  }, []);
+
   return (
     <div className={styles.stepContainer}>
       <div className={styles.stepContainer__title}>
@@ -72,13 +84,13 @@ const WalletBackupStep2 = (props) => {
         <ArrowBackIosNewIcon
           className={styles.stepContainer__title__prev}
           onClick={() => {
-            props.onPrevClick(1);
+            props.onPrevClick(2);
           }}
         ></ArrowBackIosNewIcon>
       </div>
 
       <div className={styles.stepContainer__stepper}>
-        <Stepper alternativeLabel activeStep={1} connector={<QontoConnector />}>
+        <Stepper alternativeLabel activeStep={2} connector={<QontoConnector />}>
           {steps.map((label) => (
             <Step key={label}>
               <StepLabel></StepLabel>
@@ -89,19 +101,51 @@ const WalletBackupStep2 = (props) => {
 
       <div className={styles.stepContainer__description}>
         <div className={styles.stepContainer__steptitle}>
-          <p>Your recovery seed</p>
+          <p>Confirm your Secret Recovery Phrase</p>
         </div>
         <div className={styles.stepContainer__stepdescription}>
-          <p>
-            Please write it down (all 24 words) in the right order on paper.
-          </p>
+          <p>Please select each phrase in order to make sure it is correct.</p>
         </div>
       </div>
 
       <div className={styles.stepContainer__seedbox}>
-        {seeds.map((seed, index) => {
+        {selectedPhrases.map((seed, index) => {
           return (
             <div className={styles.stepContainer__seedbox__seed}>{seed}</div>
+          );
+        })}
+      </div>
+
+      <div className={styles.stepContainer__seedbox1}>
+        {phrase.map((seed, index) => {
+          return (
+            <div
+              className={
+                seed.select
+                  ? styles.stepContainer__seedbox1__selectseed
+                  : styles.stepContainer__seedbox1__seed
+              }
+              onClick={() => {
+                let _phrase = phrase;
+                let _selectedPhrase = selectedPhrases;
+                _phrase.map((_seed, index) => {
+                  if (_seed.seed === seed.seed) {
+                    _seed.select = !_seed.select;
+                    if (_seed.select) {
+                      _selectedPhrase.push(_seed.seed);
+                    } else {
+                      const _index = _selectedPhrase.indexOf(_seed.seed);
+                      if (_index > -1)
+                        _selectedPhrase.splice(_index, 1);
+                    }
+                    setSelectedPhrases([..._selectedPhrase]);
+                  }
+                });
+                setPhrase([..._phrase]);
+              }}
+            >
+              {seed.seed}
+            </div>
           );
         })}
       </div>
@@ -109,13 +153,13 @@ const WalletBackupStep2 = (props) => {
       <button
         className={cn("button-stroke", styles.stepContainer__btn)}
         onClick={() => {
-          props.onNextClick(3);
+          props.onNextClick(4);
         }}
       >
-        I wrote down the phrase
+        Confirm
       </button>
     </div>
   );
 };
 
-export default WalletBackupStep2;
+export default WalletBackupStep3;

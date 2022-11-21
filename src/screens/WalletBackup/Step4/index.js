@@ -13,33 +13,6 @@ import cn from "classnames";
 
 const steps = ["1", "2", "3", "4"];
 
-const seeds = [
-  "question",
-  "interest",
-  "festival",
-  "conflict",
-  "security",
-  "recovery",
-  "apple",
-  "business",
-  "social",
-  "pie",
-  "coffee",
-  "resist",
-  "football",
-  "oval",
-  "knife",
-  "baseball",
-  "full",
-  "stereo",
-  "music",
-  "tenis",
-  "computer",
-  "science",
-  "blockchain",
-  "take",
-];
-
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
     top: 10,
@@ -64,7 +37,7 @@ const QontoConnector = styled(StepConnector)(({ theme }) => ({
   },
 }));
 
-const WalletBackupStep2 = (props) => {
+const WalletBackupStep4 = (props) => {
   return (
     <div className={styles.stepContainer}>
       <div className={styles.stepContainer__title}>
@@ -72,13 +45,13 @@ const WalletBackupStep2 = (props) => {
         <ArrowBackIosNewIcon
           className={styles.stepContainer__title__prev}
           onClick={() => {
-            props.onPrevClick(1);
+            props.onPrevClick(3);
           }}
         ></ArrowBackIosNewIcon>
       </div>
 
       <div className={styles.stepContainer__stepper}>
-        <Stepper alternativeLabel activeStep={1} connector={<QontoConnector />}>
+        <Stepper alternativeLabel activeStep={3} connector={<QontoConnector />}>
           {steps.map((label) => (
             <Step key={label}>
               <StepLabel></StepLabel>
@@ -89,33 +62,24 @@ const WalletBackupStep2 = (props) => {
 
       <div className={styles.stepContainer__description}>
         <div className={styles.stepContainer__steptitle}>
-          <p>Your recovery seed</p>
+          <p>Congratulations!</p>
         </div>
         <div className={styles.stepContainer__stepdescription}>
           <p>
-            Please write it down (all 24 words) in the right order on paper.
+            You passed the test - keep your Secret Recovery Phrase safe, it's
+            your responsibility!
           </p>
         </div>
       </div>
 
-      <div className={styles.stepContainer__seedbox}>
-        {seeds.map((seed, index) => {
-          return (
-            <div className={styles.stepContainer__seedbox__seed}>{seed}</div>
-          );
-        })}
-      </div>
-
       <button
         className={cn("button-stroke", styles.stepContainer__btn)}
-        onClick={() => {
-          props.onNextClick(3);
-        }}
+        style={{ "margin-top": "80px" }}
       >
-        I wrote down the phrase
+        All Done
       </button>
     </div>
   );
 };
 
-export default WalletBackupStep2;
+export default WalletBackupStep4;
