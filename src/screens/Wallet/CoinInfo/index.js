@@ -5,21 +5,21 @@ import ActivityInfoItem from "../ActivityItem";
 
 const coinInfo = [
   {
-    src: "images/coins/btc.png",
+    src: "/images/coins/btc.png",
     name: "Bitcoin",
     percent: "+2.16%",
     priceUsd: "$306.46",
     priceCoin: "0.0159277 BTC",
   },
   {
-    src: "images/coins/eth.png",
+    src: "/images/coins/eth.png",
     name: "Ethereum",
     percent: "+3.56%",
     priceUsd: "$1306.60",
     priceCoin: "1 ETH",
   },
   {
-    src: "images/coins/bnb.png",
+    src: "/images/coins/bnb.png",
     name: "Bnb",
     percent: "-4.06%",
     priceUsd: "$56.46",

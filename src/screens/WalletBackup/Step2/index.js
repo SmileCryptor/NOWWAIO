@@ -26,18 +26,6 @@ const seeds = [
   "pie",
   "coffee",
   "resist",
-  "football",
-  "oval",
-  "knife",
-  "baseball",
-  "full",
-  "stereo",
-  "music",
-  "tenis",
-  "computer",
-  "science",
-  "blockchain",
-  "take",
 ];
 
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
@@ -93,7 +81,7 @@ const WalletBackupStep2 = (props) => {
         </div>
         <div className={styles.stepContainer__stepdescription}>
           <p>
-            Please write it down (all 24 words) in the right order on paper.
+            Please write it down (all 12 words) in the right order on paper.
           </p>
         </div>
       </div>

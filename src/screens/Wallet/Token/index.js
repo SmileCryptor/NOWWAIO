@@ -31,7 +31,7 @@ const TokenItem = (props) => {
           <input
             className={styles.input}
             type="checkbox"
-            checked={props.data.state}
+            defaultChecked={props.data.state}
           />
           <span className={styles.inner}>
             <span className={styles.box}></span>

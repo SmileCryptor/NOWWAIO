@@ -26,18 +26,6 @@ const seeds = [
   "pie",
   "coffee",
   "resist",
-  "football",
-  "oval",
-  "knife",
-  "baseball",
-  "full",
-  "stereo",
-  "music",
-  "tenis",
-  "computer",
-  "science",
-  "blockchain",
-  "take",
 ];
 
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
@@ -135,8 +123,7 @@ const WalletBackupStep3 = (props) => {
                       _selectedPhrase.push(_seed.seed);
                     } else {
                       const _index = _selectedPhrase.indexOf(_seed.seed);
-                      if (_index > -1)
-                        _selectedPhrase.splice(_index, 1);
+                      if (_index > -1) _selectedPhrase.splice(_index, 1);
                     }
                     setSelectedPhrases([..._selectedPhrase]);
                   }

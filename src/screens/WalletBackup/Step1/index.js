@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../Wallet.module.sass";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import Checkbox from "@mui/material/Checkbox";
 import DoneIcon from "@mui/icons-material/Done";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
@@ -37,6 +38,8 @@ const QontoConnector = styled(StepConnector)(({ theme }) => ({
 }));
 
 const WalletBackupStep1 = (props) => {
+  const [checkTip1, setCheckTip1] = useState(false);
+  const [checkTip2, setCheckTip2] = useState(false);
   return (
     <div className={styles.stepContainer}>
       <div className={styles.stepContainer__title}>
@@ -62,7 +65,7 @@ const WalletBackupStep1 = (props) => {
         </div>
         <div className={styles.stepContainer__stepdescription}>
           <p>
-            In the next step you will see secret seed(24 words) that allows you
+            In the next step you will see secret seed(12 words) that allows you
             to secure and recover a wallet.
           </p>
         </div>
@@ -72,25 +75,33 @@ const WalletBackupStep1 = (props) => {
         <p className={styles.stepContainer__tip__title}>I understand:</p>
         <div className={styles.stepContainer__tip__box}>
           <p>If i lose my secret seed, the wallet will not be recoverable</p>
-          <DoneIcon
+          <Checkbox
             className={styles.stepContainer__tip__box__check}
-          ></DoneIcon>
+            value={checkTip1}
+            onChange={(e) => {
+              setCheckTip1(e.target.checked);
+            }}
+          />
         </div>
         <div className={styles.stepContainer__tip__box}>
           <p>
             If i expose or share my secret seed to anybody, my funds can be
             stolen
           </p>
-          <DoneIcon
+          <Checkbox
             className={styles.stepContainer__tip__box__check}
-          ></DoneIcon>
+            value={checkTip2}
+            onChange={(e) => {
+              setCheckTip2(e.target.checked);
+            }}
+          />
         </div>
       </div>
 
       <button
         className={cn("button-stroke", styles.stepContainer__btn)}
         onClick={() => {
-          props.onNextClick(2);
+          if (checkTip1 && checkTip2) props.onNextClick(2);
         }}
       >
         Continue
