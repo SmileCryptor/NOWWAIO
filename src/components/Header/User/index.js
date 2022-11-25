@@ -150,14 +150,18 @@ const User = ({ className }) => {
         {visible && (
           <div className={styles.body}>
             <div className={styles.name}>{user}</div>
-            <div className={styles.code}>
-              <div className={styles.number}>
-                {account && shortenAddress(account)}
+            {account &&
+            (
+              <div className={styles.code}>
+                <div className={styles.number}>
+                  {account && shortenAddress(account)}
+                </div>
+                <button className={styles.copy}>
+                  <Icon name="copy" size="16" />
+                </button>
               </div>
-              <button className={styles.copy}>
-                <Icon name="copy" size="16" />
-              </button>
-            </div>
+            )}
+
             <div className={styles.wrap}>
               <div className={styles.line}>
                 <div className={styles.preview}>
@@ -173,11 +177,14 @@ const User = ({ className }) => {
                   </div>
                 </div>
               </div>
-              <button
-                className={cn("button-stroke button-small", styles.button)}
-              >
-                Manage fun on Coinbase
-              </button>
+              <Link to="/wallet">
+                <button
+                  className={cn("button-stroke button-small", styles.button)}
+                  onClick={() => setVisible(false)}
+                >
+                  My wallet
+                </button>
+              </Link>
             </div>
             <div className={styles.menu}>
               <Link className={styles.item} to="/store">
@@ -186,13 +193,13 @@ const User = ({ className }) => {
                 </div>
                 <div className={styles.text}>My Collection</div>
               </Link>
-              <a className={styles.item}>
+              {/* <a className={styles.item}>
                 <div className={styles.icon}>
                   <Icon name="bulb" size="20" />
                 </div>
                 <div className={styles.text}>Dark theme</div>
                 <Theme className={styles.theme} />
-              </a>
+              </a> */}
               <a
                 className={cn(styles.item, styles.disconnect)}
                 onClick={onDisconnect}

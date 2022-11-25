@@ -28,6 +28,10 @@ const nav = [
     url: "/gallery",
     title: "NFT Gallery",
   },
+  {
+    url: "/wallet",
+    title: "Wallet",
+  },
 ];
 
 const Headers = () => {
@@ -61,6 +65,7 @@ const Headers = () => {
                 activeClassName={styles.active}
                 to={x.url}
                 key={index}
+                onClick={() => setVisibleNav(false)}
               >
                 {x.title}
               </Link>
@@ -104,7 +109,7 @@ const Headers = () => {
         >
           Connect Wallet
         </Link> */}
-        {/* <User className={styles.user} /> */}
+        <User className={styles.user} />
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}
           onClick={() => setVisibleNav(!visibleNav)}

@@ -8,13 +8,19 @@ import SellIcon from "@mui/icons-material/Sell";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
+import SettingsBackupRestoreIcon from "@mui/icons-material/SettingsBackupRestore";
 import CoinInfo from "./CoinInfo";
 import Modal from "@mui/material/Modal";
 import Tokens from "./Token";
+import { Link } from "react-router-dom";
 
 const Wallet = () => {
   const [open, setOpen] = useState(false);
   const [isAddToken, setIsAddToken] = useState(false);
+
+  const gotoLink = (link) => {
+    window.location.href = link;
+  };
 
   return (
     <div className={styles.wallet}>
@@ -99,15 +105,24 @@ const Wallet = () => {
               <NorthIcon className={styles.modal__actiongrid__item__icon} />
               <p>Send</p>
             </div>
-            <div className={styles.modal__actiongrid__item}>
+            {/* <div className={styles.modal__actiongrid__item}>
               <CurrencyExchangeIcon
                 className={styles.modal__actiongrid__item__icon}
               />
               <p>Cash out</p>
-            </div>
+            </div> */}
             <div className={styles.modal__actiongrid__item}>
               <SwapHorizIcon className={styles.modal__actiongrid__item__icon} />
               <p>Trade</p>
+            </div>
+            <div
+              className={styles.modal__actiongrid__item}
+              onClick={() => gotoLink("/wallet/backup")}
+            >
+              <SettingsBackupRestoreIcon
+                className={styles.modal__actiongrid__item__icon}
+              />
+              <p>Back up</p>
             </div>
           </div>
         </div>
