@@ -57,10 +57,10 @@ const Footers = () => {
               />
             </Link>
             <div className={styles.info}>The New Creative Economy.</div>
-            {/* <div className={styles.version}>
+            <div className={styles.version}>
               <div className={styles.details}>Dark theme</div>
               <Theme className="theme-big" />
-            </div> */}
+            </div>
           </div>
           <div className={styles.col}>
             {items.map((x, index) => (

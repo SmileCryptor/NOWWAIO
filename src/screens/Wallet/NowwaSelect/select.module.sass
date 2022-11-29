@@ -15,7 +15,21 @@
         height: 48px
         border-radius: 8px
         border: none
-        background: $neutrals2
+        background: $neutrals1 
+        border: 1px solid $neutrals4
+        font-color: #fff
+        display: flex 
+        align-items: center
+        padding-left: 16px
+        padding-right: 16px
+        cursor: pointer
+
+    &__select__noborder
+        position: relative
+        height: 48px
+        border-radius: 8px
+        border: none
+        background: $neutrals1 
         font-color: #fff
         display: flex 
         align-items: center
@@ -47,6 +61,16 @@
         display: flex 
         align-items: center
         justify-content: center
+    
+    &__dropdown__noborder
+        position: absolute
+        top: 110%
+        left: 0
+        z-index: 1
+        width: 100%
+        border-radius: 8px
+        padding: 8px 0px
+        background: $neutrals1
 
     &__dropdown
         position: absolute
@@ -56,7 +80,8 @@
         width: 100%
         border-radius: 8px
         padding: 8px 0px
-        background: $neutrals2
+        background: $neutrals1
+        border: 1px solid $neutrals4
 
         &__row
             display: flex 
@@ -71,11 +96,11 @@
         li
             padding: 8px 16px
             text-align: left            
-            background: $neutrals2
+            background: $neutrals1
             cursor: pointer           
 
             &:hover
-                background: $blue
+                background: $neutrals2
 
 
     

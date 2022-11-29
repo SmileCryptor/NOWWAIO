@@ -3,7 +3,7 @@ import styles from "./select.module.sass";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 
-const NowwaSelect = ({ label, startDecorator, data }) => {
+const NowwaSelect = ({ label, startDecorator, data, type }) => {
   const [isDropdown, setIsDropdown] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const wrapperRef = useRef(null);
@@ -32,7 +32,11 @@ const NowwaSelect = ({ label, startDecorator, data }) => {
     <div className={styles.box} ref={wrapperRef}>
       {!!label && <div className={styles.box__label}>{label}</div>}
       <div
-        className={styles.box__select}
+        className={
+          type === "outlined"
+            ? styles.box__select
+            : styles.box__select__noborder
+        }
         onClick={() => {
           setIsDropdown(!isDropdown);
         }}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./Wallet.module.sass";
 import cn from "classnames";
 import SouthIcon from "@mui/icons-material/South";
@@ -37,13 +38,23 @@ const Wallet = () => {
         </div>
 
         <div className={styles.walletcontainer__actionbar}>
-          <div className={styles.walletcontainer__actionbar__actionitem}>
+          <div
+            className={styles.walletcontainer__actionbar__actionitem}
+            onClick={() => {
+              gotoLink("/wallet/receive");
+            }}
+          >
             <SouthIcon
               className={styles.walletcontainer__actionbar__actionitem__icon}
             />
             <p>Receive</p>
           </div>
-          <div className={styles.walletcontainer__actionbar__actionitem}>
+          <div
+            className={styles.walletcontainer__actionbar__actionitem}
+            onClick={() => {
+              gotoLink("/wallet/send");
+            }}
+          >
             <NorthIcon
               className={styles.walletcontainer__actionbar__actionitem__icon}
             />
@@ -97,11 +108,21 @@ const Wallet = () => {
               <SellIcon className={styles.modal__actiongrid__item__icon} />
               <p>Sell</p>
             </div>
-            <div className={styles.modal__actiongrid__item}>
+            <div
+              className={styles.modal__actiongrid__item}
+              onClick={() => {
+                gotoLink("/wallet/receive");
+              }}
+            >
               <SouthIcon className={styles.modal__actiongrid__item__icon} />
               <p>Receive</p>
             </div>
-            <div className={styles.modal__actiongrid__item}>
+            <div
+              className={styles.modal__actiongrid__item}
+              onClick={() => {
+                gotoLink("/wallet/send");
+              }}
+            >
               <NorthIcon className={styles.modal__actiongrid__item__icon} />
               <p>Send</p>
             </div>
