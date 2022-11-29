@@ -1,0 +1,130 @@
+@import ../../../styles/helpers
+
+.wallet
+    width: 100%    
+    align-items: center
+    display: flex
+    justify-content: center
+
+.walletcontainer
+    border: 2px solid $neutrals2
+    border-radius: 12px
+    width: 70%
+    text-align: center
+    padding: 30px
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 30px
+
+    +t
+        width: 100%
+
+    &__title
+        text-align: center
+        margin-bottom: 20px
+        font-size: 30px
+        position: relative
+        width: 100%
+
+        &__prev
+            position: absolute
+            top: 50%
+            left: 0px
+            transform: translateY(-50%)
+            cursor: pointer
+
+
+    &__address
+        width: 60%
+
+        +t 
+            width: 100%
+
+        &__img
+            width: 20px
+            height: 20px
+            border-radius: 100%
+
+        &__caption
+            width: 100%
+            text-align: left
+
+    &__info
+        width: 100%
+        display: flex
+        justify-content: space-between
+        align-items: center
+        padding: 20px 50px
+
+        +t 
+            padding: 5px 20px
+
+        &__coin
+            min-width: 150px
+            width: 100%
+
+        &__price
+            width: 100%
+            display: flex 
+            flex-direction: column 
+            align-items: flex-end
+            justify-content: center
+
+    &__amount
+        font-color: #fff
+        font-size: 40px
+
+    &__amountInput
+        padding: 10px
+        height: 50px
+        width: 200px
+        border-radius: 10px
+        background-color: $neutrals2
+        color: #fff
+        font-size: 30px
+        text-align: center
+
+    &__usdValue
+        margin-top: 30px
+        padding-left: 15px !important
+        padding-right: 15px !important
+        width: 150px
+        padding: 5px
+        border-radius: 16px
+        background: $neutrals2
+        color: $neutrals5
+        display: flex
+        justify-content: space-between
+
+    &__review
+        display: flex 
+        flex-direction: column
+        margin-top: 25px
+        padding: 20px
+        border-radius: 8px
+        background: $neutrals2
+        gap: 10px
+
+        &__item
+            display: flex
+            gap: 8px
+
+        &__edit
+            color: #0f0
+            cursor: pointer
+
+        &__largeItem
+            font-size: 18px
+
+.btn
+    width: 300px
+    align-items: center
+    text-align: center
+    border-radius: 12px
+    +m
+        width: 100%
+.row
+    display: flex
+    justify-content: space-between

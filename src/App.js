@@ -22,6 +22,8 @@ import Game from "./screens/Game";
 import Login from "./screens/Login";
 import WalletBackup from "./screens/WalletBackup";
 import Wallet from "./screens/Wallet";
+import WalletSendToken from "./screens/Wallet/SendToken";
+import WalletReceiveToken from "./screens/Wallet/ReceiveToken";
 
 function App() {
   return (
@@ -206,6 +208,24 @@ function App() {
           render={() => (
             <Page>
               <Wallet />
+            </Page>
+          )}
+        />
+        <Route
+          exact
+          path="/wallet/send"
+          render={() => (
+            <Page>
+              <WalletSendToken />
+            </Page>
+          )}
+        />
+        <Route
+          exact
+          path="/wallet/receive"
+          render={() => (
+            <Page>
+              <WalletReceiveToken />
             </Page>
           )}
         />
