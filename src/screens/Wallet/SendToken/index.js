@@ -44,44 +44,92 @@ const Step1 = (props) => {
   return (
     <div className={styles.walletcontainer}>
       <p className={styles.walletcontainer__title}>Send To</p>
-
-      <div className={styles.walletcontainer__address}>
-        <NowwaSelect
-          label="From"
-          startDecorator={true}
-          data={walletAddress}
-          type="outlined"
-        />
-      </div>
-      <div className={styles.walletcontainer__address}>
-        <p className={styles.walletcontainer__address__caption}>To</p>
-        <TextField
-          size="lg"
-          variant="solid"
-          placeholder="Search, public address(0x), or ENS"
-          startDecorator={
-            <img
-              className={styles.walletcontainer__address__img}
-              src="/images/content/avatar-1.jpg"
-              alt="Avatar"
-            />
-          }
-          sx={{
-            div: {
+      <div className={styles.walletcontainer__first}>
+        <div className={styles.walletcontainer__address}>
+          <NowwaSelect
+            label="From"
+            startDecorator={true}
+            data={walletAddress}
+            type="outlined"
+          />
+        </div>
+        <div className={styles.walletcontainer__address}>
+          <p className={styles.walletcontainer__address__caption}>To</p>
+          <TextField
+            size="lg"
+            variant="solid"
+            placeholder="Search, public address(0x), or ENS"
+            startDecorator={
+              <img
+                className={styles.walletcontainer__address__img}
+                src="/images/content/avatar-1.jpg"
+                alt="Avatar"
+              />
+            }
+            sx={{
+              div: {
+                background: "#11141B",
+              },
               background: "#11141B",
-            },
-            background: "#11141B",
-            "border-radius": "8px",
-            border: "1px solid #777E90",
-          }}
-        ></TextField>
+              "border-radius": "8px",
+              border: "1px solid #777E90",
+            }}
+          ></TextField>
+        </div>
+        <p className={styles.walletcontainer__transfer}>
+          Transfer between my accounts
+        </p>
+
+        <div className={styles.walletcontainer__recent}>
+          <p className={styles.walletcontainer__recent__label}>Recent</p>
+          <div className={styles.walletcontainer__recent__item}>
+            <img
+              alt="img"
+              src="/images/content/avatar-2.jpg"
+              className={styles.walletcontainer__recent__item__img}
+            ></img>
+            <div className={styles.walletcontainer__recent__item__detail}>
+              <p className={styles.walletcontainer__recent__lgtxt}>Beexay</p>
+              <p className={styles.walletcontainer__recent__smalltxt}>
+                0x3Dc6..Dxe2
+              </p>
+            </div>
+          </div>
+          <div className={styles.walletcontainer__recent__item}>
+            <img
+              alt="img"
+              src="/images/content/avatar-7.jpg"
+              className={styles.walletcontainer__recent__item__img}
+            ></img>
+            <div className={styles.walletcontainer__recent__item__detail}>
+              <p className={styles.walletcontainer__recent__lgtxt}>Dasunnie</p>
+              <p className={styles.walletcontainer__recent__smalltxt}>
+                0x2G26..cD41
+              </p>
+            </div>
+          </div>
+          <div className={styles.walletcontainer__recent__item}>
+            <img
+              alt="img"
+              src="/images/content/avatar-6.jpg"
+              className={styles.walletcontainer__recent__item__img}
+            ></img>
+            <div className={styles.walletcontainer__recent__item__detail}>
+              <p className={styles.walletcontainer__recent__lgtxt}>Geneae</p>
+              <p className={styles.walletcontainer__recent__smalltxt}>
+                0x3Dc6..Dxe2
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
+
       <button
         className={cn("button-yellow", styles.btn)}
         onClick={() => {
           props.onNextStep();
         }}
-        style={{ "margin-top": "150px" }}
+        style={{ "margin-top": "50px" }}
       >
         Next
       </button>
@@ -107,9 +155,14 @@ const Step2 = (props) => {
           <NowwaSelect data={coinInfo} startDecorator={true} />
         </div>
 
-        <div className={styles.walletcontainer__info__price}>
-          <p>70.42ETH</p>
-          <p className={styles.walletcontainer__info__price__below}>$121.33</p>
+        <div className={styles.row}>
+          <div className={styles.walletcontainer__info__price}>
+            <p>70.42ETH</p>
+            <p className={styles.walletcontainer__info__price__below}>
+              $121.33
+            </p>
+          </div>
+          <div className={styles.walletcontainer__info__btn}>Max</div>
         </div>
       </div>
 
@@ -153,84 +206,89 @@ const Step3 = (props) => {
       </div>
 
       <div className={styles.walletcontainer__amount}>0.125 BTC</div>
-
-      <div className={styles.linebox}>
-        <p className={styles.walletcontainer__address__caption}>From</p>
-        <TextField
-          size="lg"
-          variant="solid"
-          placeholder="Search, public address(0x), or ENS"
-          startDecorator={
-            <img
-              className={styles.walletcontainer__address__img}
-              src="/images/content/avatar-1.jpg"
-              alt="Avatar"
-            />
-          }
-          sx={{
-            div: {
-              background: "#11141B",
-            },
-            background: "#11141B",
-            border: "1px solid #23262F",
-            "border-radius": "8px",
-          }}
-          value="0x4fd4....89u3"
-        ></TextField>
-
-        <p className={styles.walletcontainer__address__caption}>To</p>
-        <TextField
-          size="lg"
-          variant="solid"
-          placeholder="Search, public address(0x), or ENS"
-          startDecorator={
-            <img
-              className={styles.walletcontainer__address__img}
-              src="/images/content/avatar-1.jpg"
-              alt="Avatar"
-            />
-          }
-          sx={{
-            div: {
-              background: "#11141B",
-            },
-            background: "#11141B",
-            border: "1px solid #23262F",
-            "border-radius": "8px",
-          }}
-          value="0x56d4....3dff"
-        ></TextField>
-      </div>
-      <div className={styles.linebox}>
-        <div className={styles.row}>
-          <p className={styles.walletcontainer__review__smallItem}>Amount</p>
-          <p className={styles.walletcontainer__review__smallItem}>0.0125BTC</p>
+      <div className={styles.walletcontainer__first}>
+        <div className={styles.walletcontainer__address}>
+          <p className={styles.walletcontainer__address__caption}>From</p>
+          <TextField
+            size="lg"
+            variant="solid"
+            placeholder="Search, public address(0x), or ENS"
+            startDecorator={
+              <img
+                className={styles.walletcontainer__address__img}
+                src="/images/content/avatar-1.jpg"
+                alt="Avatar"
+              />
+            }
+            sx={{
+              div: {
+                background: "#23262F",
+              },
+              background: "#23262F",
+              border: "1px solid #23262F",
+              "border-radius": "8px",
+            }}
+            value="0x4fd4....89u3"
+          ></TextField>
         </div>
-        <div className={styles.row}>
-          <div className={styles.walletcontainer__review__item}>
+        <div className={styles.walletcontainer__address}>
+          <p className={styles.walletcontainer__address__caption}>To</p>
+          <TextField
+            size="lg"
+            variant="solid"
+            placeholder="Search, public address(0x), or ENS"
+            startDecorator={
+              <img
+                className={styles.walletcontainer__address__img}
+                src="/images/content/avatar-1.jpg"
+                alt="Avatar"
+              />
+            }
+            sx={{
+              div: {
+                background: "#23262F",
+              },
+              background: "#23262F",
+              border: "1px solid #23262F",
+              "border-radius": "8px",
+            }}
+            value="0x56d4....3dff"
+          ></TextField>
+        </div>
+
+        <div className={styles.linebox}>
+          <div className={styles.row}>
+            <p className={styles.walletcontainer__review__smallItem}>Amount</p>
             <p className={styles.walletcontainer__review__smallItem}>
-              Network Fee
-            </p>
-            <p className={styles.walletcontainer__review__edit}>Edit</p>
-          </div>
-          <p className={styles.walletcontainer__review__smallItem}>
-            0.000024BTC
-          </p>
-        </div>
-        <div className={styles.row}>
-          <p className={styles.walletcontainer__review__largeItem}>
-            Total Amount
-          </p>
-          <div>
-            <p className={styles.walletcontainer__review__largeItem}>
               0.0125BTC
             </p>
-            <p
-              className={styles.walletcontainer__review__smallItem}
-              style={{ "text-align": "right" }}
-            >
-              $0.558432
+          </div>
+          <div className={styles.row}>
+            <div className={styles.walletcontainer__review__item}>
+              <p className={styles.walletcontainer__review__smallItem}>
+                Network Fee
+              </p>
+              <p className={styles.walletcontainer__review__edit}>Edit</p>
+            </div>
+            <p className={styles.walletcontainer__review__smallItem}>
+              0.000024BTC
             </p>
+          </div>
+          <div className={styles.topalignrow}>
+            <p className={styles.walletcontainer__review__largeItem}>
+              Total Amount
+            </p>
+            <div>
+              <p className={styles.walletcontainer__review__largeItem}>
+                0.0125BTC
+              </p>
+              <p
+                className={styles.walletcontainer__review__smallItem}
+                style={{ "text-align": "right" }}
+              >
+                $0.558432
+              </p>
+            </div>
           </div>
         </div>
       </div>

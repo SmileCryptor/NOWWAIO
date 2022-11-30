@@ -35,6 +35,7 @@ const coinInfo = [
 ];
 
 const Step0 = (props) => {
+  const [openSnackbar, setOpenSnackbar] = useState(false);
   const [amount, setAmount] = useState(0.0);
   return (
     <div className={styles.step}>
@@ -55,7 +56,16 @@ const Step0 = (props) => {
       <p className={styles.step__subdesc}>Scan address to receive payment</p>
 
       <div className={styles.step__subbtnbox}>
-        <div className={styles.step__subbtn}>
+        <div
+          className={styles.step__subbtn}
+          onClick={() => {
+            navigator.clipboard.writeText("0x3Dc6A12945AC14C9432A15C56DDfCE");
+            setOpenSnackbar(true);
+            setTimeout(() => {
+              setOpenSnackbar(false);
+            }, 3000);
+          }}
+        >
           <p style={{ "margin-right": "10px" }}>0x3Dc6..DfCE</p>
           <ContentCopyIcon className={styles.step__subbtn__img} />
         </div>
@@ -74,6 +84,16 @@ const Step0 = (props) => {
       >
         Request Payment
       </button>
+      <Snackbar
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        autoHideDuration={3000}
+        open={openSnackbar}
+      >
+        <div className={styles.step__subbtn}>
+          <p style={{ "margin-right": "10px" }}>Link copied to clipboard!</p>
+          <ContentCopyIcon className={styles.step__subbtn__img} />
+        </div>
+      </Snackbar>
     </div>
   );
 };
@@ -86,9 +106,7 @@ const Step1 = (props) => {
         <p>Amount</p>
         <ArrowBackIosNewIcon
           className={styles.step__title__prev}
-          onClick={() => {
-            props.onPrevStep();
-          }}
+          onClick={() => {}}
         ></ArrowBackIosNewIcon>
       </div>
 
@@ -142,6 +160,7 @@ const Step2 = (props) => {
         <p
           className={styles.step__linkCopy}
           onClick={() => {
+            navigator.clipboard.writeText("0x3Dc6A12945AC14C9432A15C56DDfCE");
             setOpenSnackbar(true);
             setTimeout(() => {
               setOpenSnackbar(false);
@@ -204,23 +223,13 @@ const Step2 = (props) => {
 };
 
 const WalletReceiveToken = (props) => {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(1);
   return (
     <div className={styles.wallet}>
-      {step === 0 && (
-        <Step0
-          onNextStep={() => {
-            setStep(1);
-          }}
-        />
-      )}
       {step === 1 && (
         <Step1
           onNextStep={() => {
             setStep(2);
-          }}
-          onPrevStep={() => {
-            setStep(0);
           }}
         />
       )}

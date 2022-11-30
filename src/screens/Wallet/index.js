@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import styles from "./Wallet.module.sass";
 import cn from "classnames";
 import SouthIcon from "@mui/icons-material/South";
 import NorthIcon from "@mui/icons-material/North";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import SellIcon from "@mui/icons-material/Sell";
-import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 import SettingsBackupRestoreIcon from "@mui/icons-material/SettingsBackupRestore";
 import CoinInfo from "./CoinInfo";
 import Modal from "@mui/material/Modal";
 import Tokens from "./Token";
-import { Link } from "react-router-dom";
+import ReceiveModal from "./ReceiveToken/receiveModal";
 
 const Wallet = () => {
   const [open, setOpen] = useState(false);
   const [isAddToken, setIsAddToken] = useState(false);
+  const [receiveModalOpen, setReceiveModalOpen] = useState(false);
 
   const gotoLink = (link) => {
     window.location.href = link;
@@ -41,7 +40,7 @@ const Wallet = () => {
           <div
             className={styles.walletcontainer__actionbar__actionitem}
             onClick={() => {
-              gotoLink("/wallet/receive");
+              setReceiveModalOpen(true);
             }}
           >
             <SouthIcon
@@ -111,7 +110,7 @@ const Wallet = () => {
             <div
               className={styles.modal__actiongrid__item}
               onClick={() => {
-                gotoLink("/wallet/receive");
+                setReceiveModalOpen(true);
               }}
             >
               <SouthIcon className={styles.modal__actiongrid__item__icon} />
@@ -162,6 +161,18 @@ const Wallet = () => {
               setIsAddToken(false);
             }}
           />
+        </div>
+      </Modal>
+      <Modal
+        open={receiveModalOpen}
+        onClose={() => {
+          setReceiveModalOpen(false);
+        }}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <div className={styles.receivemodal}>
+          <ReceiveModal onNextStep={() => gotoLink("/wallet/receive")} />
         </div>
       </Modal>
     </div>

@@ -37,10 +37,8 @@
 
 
     &__address
-        width: 60%
-
-        +t 
-            width: 100%
+        margin-bottom: 20px
+        width: 100%
 
         &__img
             width: 20px
@@ -50,6 +48,50 @@
         &__caption
             width: 100%
             text-align: left
+
+    &__transfer
+        color: $blue
+        cursor: pointer
+        text-decoration: underline
+        margin-top: 20px
+
+    &__recent
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        gap: 15px
+
+        &__label
+            color: #fff
+            font-size: 16px
+            margin-top: 25px
+        
+        &__item
+            display: flex
+            align-items: center
+            gap: 12px
+            
+            &__img
+                width: 40px
+                height: 40px
+                border-radius: 100%
+            &__detail
+                display: flex
+                flex-direction: column
+
+        &__lgtxt
+            font-size: 15px
+            color: #fff
+        &__smalltxt
+            font-size: 12px
+            color: $neutrals5
+
+    &__first
+        text-align: left
+        display: flex
+        flex-direction: column 
+        justify-content: space-between
+        width: inherit             
 
     &__info
         width: 100%
@@ -74,6 +116,16 @@
             &__below
                 color: $neutrals5
                 font-size: 12px
+
+        &__btn
+            padding: 3px 8px
+            background: $neutrals2
+            border-radius: 16px
+            color: #febd32
+            font-size: 13px
+            cursor: pointer
+            width: max-content
+            height: max-content
 
     &__amount
         font-color: #fff
@@ -129,7 +181,7 @@
             gap: 8px
 
         &__edit
-            color: #0f0
+            color: #febd32
             cursor: pointer
 
         &__largeItem
@@ -149,10 +201,17 @@
 .row
     display: flex
     justify-content: space-between
+    gap: 10px
+    align-items: center
+
+.topalignrow
+    display: flex
+    justify-content: space-between
+    gap: 10px
 
 .linebox
-    margin-top: 20px
+    margin-top: 30px
     padding: 20px
     border: 1px solid $neutrals2
+    background: $neutrals2
     border-radius: 8px
-    min-width: 320px
